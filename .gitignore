@@ -16,6 +16,7 @@ hs_err_pid*
 .gradle/
 .build/
 .out/
+.idea
 
 aceleradora.fruteira.iml
 fruteira.iml
