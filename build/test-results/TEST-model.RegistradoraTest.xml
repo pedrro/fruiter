@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="model.RegistradoraTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2016-01-29T12:15:26" hostname="LApsilva" time="0.002">
+  <properties/>
+  <testcase name="shouldReturnAProductInsideRegister" classname="model.RegistradoraTest" time="0.0"/>
+  <testcase name="shouldReturnTotalOfQuantitySelledWhenIsDefined" classname="model.RegistradoraTest" time="0.0"/>
+  <testcase name="shouldReturnTheQuantityOfUnitSelled" classname="model.RegistradoraTest" time="0.0"/>
+  <testcase name="shouldReturnTotalOfQuantitySelledWhenIsNotDefined" classname="model.RegistradoraTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

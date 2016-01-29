@@ -1,0 +1,5 @@
+goiaba;2;2
+GoiAba;2;3
+abacaxi;2;3
+banana;2;3
+goiaba;2;3
