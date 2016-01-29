@@ -36,7 +36,7 @@ public class Process {
         Collections.sort(register, Register.nameComparator);
     }
 
-    public void compareNames(ArrayList<Register> register) {
+    public void compareNamesAndDeleteTheEquals(ArrayList<Register> register) {
 
         for (int i = 0; i <register.size() -1 ; i++) {
                 if ( register.get(i).getProduct().getProductName().equalsIgnoreCase(register.get(i + 1).getProduct().getProductName())) {
@@ -63,11 +63,11 @@ public class Process {
         }
     }
 
-    private int getSumOfEqualProducts(int product1, int product2) {
-        return product1 + product2;
+    public int getSumOfEqualProducts(int productSelledQuantity, int nextProductSelledQuantity) {
+        return productSelledQuantity + nextProductSelledQuantity;
     }
 
-    private double getTotalOfEachProductSelled(double valueOfProduct, int quantityOfProductSelled) {
+    public double getTotalOfEachProductSelled(double valueOfProduct, int quantityOfProductSelled) {
         return valueOfProduct * quantityOfProductSelled;
     }
 
