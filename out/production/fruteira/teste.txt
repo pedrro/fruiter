@@ -1,2 +1,0 @@
-goiaba;2;2
-beterraba;2;3
