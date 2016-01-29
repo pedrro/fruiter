@@ -6,33 +6,33 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class RegistradoraTest {
-    Produto produto;
-    Registradora registradora;
+    Product product;
+    Register register;
 
     @Before
     public void setUp() throws Exception {
-        produto = new Produto("produtoTeste", 1.00);
-        registradora= new Registradora(produto,10);
+        product = new Product("produtoTeste", 1.00);
+        register= new Register(product,10);
     }
 
     @Test
     public void shouldReturnAProductInsideRegister() {
-        assertSame(produto, registradora.getProduto());
+        assertSame(product, register.getProduct());
     }
 
     @Test
     public void shouldReturnTheQuantityOfUnitSelled() {
-        assertEquals(10,registradora.getQuantidadeVendida());
+        assertEquals(10,register.getSelledQuantity());
     }
 
     @Test
     public void shouldReturnTotalOfQuantitySelledWhenIsNotDefined() {
-        assertEquals(0,registradora.getTotalQuantidadeVendida(), 0);
+        assertEquals(0,register.getTotalSelledQuantity(), 0);
     }
 
     @Test
     public void shouldReturnTotalOfQuantitySelledWhenIsDefined() {
-        registradora = new Registradora(produto,10,100);
-        assertEquals(100,registradora.getTotalQuantidadeVendida(),100);
+        register = new Register(product,10,100);
+        assertEquals(100,register.getTotalSelledQuantity(),100);
     }
 }

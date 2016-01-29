@@ -1,7 +1,7 @@
 package business;
 
-import model.Produto;
-import model.Registradora;
+import model.Product;
+import model.Register;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,39 +15,39 @@ public class InputTest {
 
     File file;
     Input input;
-    Produto produto;
-    Registradora registradora;
-    ArrayList<Registradora> registerlist;
+    Product product;
+    Register register;
+    ArrayList<Register> registerlist;
 
 
     @Before
     public void setUp() throws Exception {
-        produto = new Produto("goiaba",2.00);
-        registradora = new Registradora(produto,2);
-        registerlist = new ArrayList<Registradora>();
+        product = new Product("goiaba",2.00);
+        register = new Register(product,2);
+        registerlist = new ArrayList<Register>();
         file = new File("src//test//resources//teste.txt");
         input = new Input();
 
-        registerlist.add(registradora);
+        registerlist.add(register);
 
 
     }
 
     @Test
     public void testReadFile() throws Exception {
-        ArrayList<Registradora> registerTest = input.readFile(file);
-        assertEquals(registerlist.get(0).getProduto().getNomeProduto(),registerTest.get(0).getProduto().getNomeProduto());
-        assertEquals(registerlist.get(0).getProduto().getValorUnidade(),registerTest.get(0).getProduto().getValorUnidade(), 2);
-        assertEquals(registerlist.get(0).getQuantidadeVendida(),registerTest.get(0).getQuantidadeVendida());
+        ArrayList<Register> registerTest = input.readFile(file);
+        assertEquals(registerlist.get(0).getProduct().getProductName(),registerTest.get(0).getProduct().getProductName());
+        assertEquals(registerlist.get(0).getProduct().getUnitValue(),registerTest.get(0).getProduct().getUnitValue(), 2);
+        assertEquals(registerlist.get(0).getSelledQuantity(),registerTest.get(0).getSelledQuantity());
     }
 
     @Test
     public void shouldSplitAListAndReturnAnArrayList() throws Exception {
         String line = "goiaba;2;2";
-        ArrayList<Registradora> registerTest = input.splitLine(line);
+        ArrayList<Register> registerTest = input.splitLine(line);
 
-        assertEquals(registerlist.get(0).getProduto().getNomeProduto(),registerTest.get(0).getProduto().getNomeProduto());
-        assertEquals(registerlist.get(0).getProduto().getValorUnidade(),registerTest.get(0).getProduto().getValorUnidade(), 2);
-        assertEquals(registerlist.get(0).getQuantidadeVendida(),registerTest.get(0).getQuantidadeVendida());
+        assertEquals(registerlist.get(0).getProduct().getProductName(),registerTest.get(0).getProduct().getProductName());
+        assertEquals(registerlist.get(0).getProduct().getUnitValue(),registerTest.get(0).getProduct().getUnitValue(), 2);
+        assertEquals(registerlist.get(0).getSelledQuantity(),registerTest.get(0).getSelledQuantity());
     }
 }

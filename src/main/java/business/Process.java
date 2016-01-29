@@ -1,8 +1,8 @@
 package business;
 
 
-import model.Produto;
-import model.Registradora;
+import model.Product;
+import model.Register;
 
 import java.util.*;
 
@@ -10,57 +10,55 @@ public class Process {
 
     private int sumEqualProducts =0;
     private double sumTotalValueSelled = 0;
+    Register newRegister = null;
+    Product newProduct = null;
 
-    public void output(ArrayList<Registradora> registradora) {
-        sortArray(registradora);
-        compareNames(registradora);
-        returnTotalSelledForEachProduct(registradora);
+    public void output(ArrayList<Register> register) {
+        sortArray(register);
+        compareNames(register);
+        returnTotalSelledForEachProduct(register);
 
-        for (Registradora r : registradora) {
-            System.out.println( "Nome do produto: "+ r.getProduto().getNomeProduto() + "\n Valor da unidade: R$" + r.getProduto().getValorUnidade() + "\n Unidades Vendidas: " + r.getQuantidadeVendida()+ "\n Total: R$"+ r.getTotalQuantidadeVendida()+ "\n");
+        for (Register r : register) {
+            System.out.println( "Nome do produto: "+ r.getProduct().getProductName() + "\n Valor da unidade: R$" + r.getProduct().getUnitValue() + "\n Unidades Vendidas: " + r.getSelledQuantity()+ "\n Total: R$"+ r.getTotalSelledQuantity()+ "\n");
         }
-        System.out.println("Total do dia: "+getTotalOfDay(registradora));
+        System.out.println("Total do dia: "+getTotalOfDay(register));
     }
 
-    public Double getTotalOfDay(ArrayList<Registradora> registradora) {
+    public Double getTotalOfDay(ArrayList<Register> register) {
         double total = 0;
-        for (Registradora r : registradora) {
-            total += r.getProduto().getValorUnidade() * r.getQuantidadeVendida();
+        for (Register r : register) {
+            total += r.getProduct().getUnitValue() * r.getTotalSelledQuantity();
         }
             return total;
     }
 
-    public void sortArray(ArrayList<Registradora> registradora) {
-        Collections.sort(registradora, Registradora.nameComparator);
+    public void sortArray(ArrayList<Register> register) {
+        Collections.sort(register, Register.nameComparator);
     }
 
-    public void compareNames(ArrayList<Registradora> registradora) {
-        Registradora registradoraNew = null;
-        Produto produtoNew = null;
+    public void compareNames(ArrayList<Register> register) {
 
-        for (int i = 0; i <registradora.size() -1 ; i++) {
-                if ( registradora.get(i).getProduto().getNomeProduto().equalsIgnoreCase(registradora.get(i + 1).getProduto().getNomeProduto())) {
-                    sumEqualProducts = getSumOfEqualProducts(registradora.get(i).getQuantidadeVendida(), registradora.get(i + 1).getQuantidadeVendida());
-                    sumTotalValueSelled = getTotalOfEachProductSelled(registradora.get(i).getProduto().getValorUnidade(),sumEqualProducts);
-                    produtoNew = new Produto(registradora.get(i).getProduto().getNomeProduto(), registradora.get(i).getProduto().getValorUnidade());
-                    registradoraNew = new Registradora(produtoNew, sumEqualProducts, sumTotalValueSelled);
-                    registradora.set(i, registradoraNew);
-                    registradora.remove(i+1);
+        for (int i = 0; i <register.size() -1 ; i++) {
+                if ( register.get(i).getProduct().getProductName().equalsIgnoreCase(register.get(i + 1).getProduct().getProductName())) {
+                    sumEqualProducts = getSumOfEqualProducts(register.get(i).getSelledQuantity(), register.get(i + 1).getSelledQuantity());
+                    sumTotalValueSelled = getTotalOfEachProductSelled(register.get(i).getProduct().getUnitValue(),sumEqualProducts);
+                    newProduct = new Product(register.get(i).getProduct().getProductName(), register.get(i).getProduct().getUnitValue());
+                    newRegister = new Register(newProduct, sumEqualProducts, sumTotalValueSelled);
+                    register.set(i, newRegister);
+                    register.remove(i+1);
                     i--;
                 }
         }
     }
 
-    public void returnTotalSelledForEachProduct(ArrayList<Registradora> registradora ) {
-        Registradora registradoraNew = null;
-        Produto produtoNew = null;
+    public void returnTotalSelledForEachProduct(ArrayList<Register> register ) {
 
-        for (int i = 0; i < registradora.size(); i++) {
-            if (registradora.get(i).getTotalQuantidadeVendida() == 0) {
-                sumTotalValueSelled = getTotalOfEachProductSelled(registradora.get(i).getProduto().getValorUnidade(), registradora.get(i).getQuantidadeVendida());
-                produtoNew = new Produto(registradora.get(i).getProduto().getNomeProduto(), registradora.get(i).getProduto().getValorUnidade());
-                registradoraNew = new Registradora(produtoNew, registradora.get(i).getQuantidadeVendida(), sumTotalValueSelled);
-                registradora.set(i, registradoraNew);
+        for (int i = 0; i < register.size(); i++) {
+            if (register.get(i).getTotalSelledQuantity() == 0) {
+                sumTotalValueSelled = getTotalOfEachProductSelled(register.get(i).getProduct().getUnitValue(), register.get(i).getSelledQuantity());
+                newProduct = new Product(register.get(i).getProduct().getProductName(), register.get(i).getProduct().getUnitValue());
+                newRegister = new Register(newProduct, register.get(i).getSelledQuantity(), sumTotalValueSelled);
+                register.set(i, newRegister);
             }
         }
     }

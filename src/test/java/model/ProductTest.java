@@ -6,21 +6,22 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-public class ProdutoTest {
-    Produto produto;
+public class ProductTest {
+
+    Product product;
     @Before
     public void setUp() throws Exception {
-        produto = new Produto("produtoTeste", 1.00);
+        product = new Product("produtoTeste", 1.00);
 
     }
 
     @Test
     public void shouldReturnNameOfProduct() {
-        assertEquals("produtoTeste", produto.getNomeProduto());
+        assertEquals("produtoTeste", product.getProductName());
     }
 
     @Test
     public void shouldReturnPriceOfProduct() {
-        assertEquals(1.00, produto.getValorUnidade(),1.00);
+        assertEquals(1.00, product.getUnitValue(),1.00);
     }
 }

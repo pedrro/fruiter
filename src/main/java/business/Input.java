@@ -1,7 +1,7 @@
 package business;
 
-import model.Produto;
-import model.Registradora;
+import model.Product;
+import model.Register;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,9 +10,9 @@ import java.util.Scanner;
 
 public class Input {
 
-    public ArrayList<Registradora> registradoraList = new ArrayList<Registradora>();
+    public ArrayList<Register> registerList = new ArrayList<Register>();
 
-    public ArrayList<Registradora> readFile(File file) throws FileNotFoundException {
+    public ArrayList<Register> readFile(File file) throws FileNotFoundException {
 
         Scanner scanner = new Scanner(file);
 
@@ -20,18 +20,18 @@ public class Input {
             splitLine(scanner.nextLine());
         }
         scanner.close();
-        return registradoraList;
+        return registerList;
     }
 
-    public ArrayList<Registradora> splitLine(String line) {
-        Produto produto;
-        Registradora registradora;
+    public ArrayList<Register> splitLine(String line) {
+        Product product;
+        Register register;
         String[] productInformation = line.split(";");
-        produto = new Produto(productInformation[0],Double.parseDouble(productInformation[1]));
-        registradora = new Registradora(produto,Integer.parseInt(productInformation[2]));
-        registradoraList.add(registradora);
+        product = new Product(productInformation[0],Double.parseDouble(productInformation[1]));
+        register = new Register(product,Integer.parseInt(productInformation[2]));
+        registerList.add(register);
 
-        return registradoraList;
+        return registerList;
     }
 
 
