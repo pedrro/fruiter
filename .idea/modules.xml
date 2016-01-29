@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/aceleradora.fruteira.iml" filepath="$PROJECT_DIR$/aceleradora.fruteira.iml" />
-      <module fileurl="file://$PROJECT_DIR$/fruteira.iml" filepath="$PROJECT_DIR$/fruteira.iml" />
-    </modules>
-  </component>
-</project>
