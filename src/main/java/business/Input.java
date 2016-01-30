@@ -16,7 +16,7 @@ public class Input {
 
         Scanner scanner = new Scanner(file);
 
-        while(scanner.hasNextLine()) {
+        while (scanner.hasNextLine()) {
             splitLine(scanner.nextLine());
         }
         scanner.close();
@@ -27,8 +27,8 @@ public class Input {
         Product product;
         Register register;
         String[] productInformation = line.split(";");
-        product = new Product(productInformation[0],Double.parseDouble(productInformation[1]));
-        register = new Register(product,Integer.parseInt(productInformation[2]));
+        product = new Product(productInformation[0], Double.parseDouble(productInformation[1]));
+        register = new Register(product, Integer.parseInt(productInformation[2]));
         registerList.add(register);
 
         return registerList;

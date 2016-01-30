@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.io.File;
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 
 public class InputTest {
@@ -22,8 +22,8 @@ public class InputTest {
 
     @Before
     public void setUp() throws Exception {
-        product = new Product("goiaba",2.00);
-        register = new Register(product,2);
+        product = new Product("goiaba", 2.00);
+        register = new Register(product, 2);
         registerlist = new ArrayList<Register>();
         file = new File("src//test//resources//teste.txt");
         input = new Input();
@@ -36,9 +36,9 @@ public class InputTest {
     @Test
     public void testReadFile() throws Exception {
         ArrayList<Register> registerTest = input.readFile(file);
-        assertEquals(registerlist.get(0).getProduct().getProductName(),registerTest.get(0).getProduct().getProductName());
-        assertEquals(registerlist.get(0).getProduct().getUnitValue(),registerTest.get(0).getProduct().getUnitValue(), 2);
-        assertEquals(registerlist.get(0).getSelledQuantity(),registerTest.get(0).getSelledQuantity());
+        assertEquals(registerlist.get(0).getProduct().getProductName(), registerTest.get(0).getProduct().getProductName());
+        assertEquals(registerlist.get(0).getProduct().getUnitValue(), registerTest.get(0).getProduct().getUnitValue(), 2);
+        assertEquals(registerlist.get(0).getSelledQuantity(), registerTest.get(0).getSelledQuantity());
     }
 
     @Test
@@ -46,8 +46,8 @@ public class InputTest {
         String line = "goiaba;2;2";
         ArrayList<Register> registerTest = input.splitLine(line);
 
-        assertEquals(registerlist.get(0).getProduct().getProductName(),registerTest.get(0).getProduct().getProductName());
-        assertEquals(registerlist.get(0).getProduct().getUnitValue(),registerTest.get(0).getProduct().getUnitValue(), 2);
-        assertEquals(registerlist.get(0).getSelledQuantity(),registerTest.get(0).getSelledQuantity());
+        assertEquals(registerlist.get(0).getProduct().getProductName(), registerTest.get(0).getProduct().getProductName());
+        assertEquals(registerlist.get(0).getProduct().getUnitValue(), registerTest.get(0).getProduct().getUnitValue(), 2);
+        assertEquals(registerlist.get(0).getSelledQuantity(), registerTest.get(0).getSelledQuantity());
     }
 }

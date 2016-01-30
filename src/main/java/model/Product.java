@@ -9,6 +9,7 @@ public class Product {
         this.productName = productName;
         this.unitValue = unitValue;
     }
+
     public String getProductName() {
         return productName;
     }

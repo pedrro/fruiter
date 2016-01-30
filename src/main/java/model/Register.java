@@ -40,7 +40,8 @@ public class Register {
             String productName2 = r2.getProduct().getProductName();
 
             return productName1.compareToIgnoreCase(productName2);
-        }};
+        }
+    };
 
 
 }

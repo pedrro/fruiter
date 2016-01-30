@@ -3,12 +3,13 @@ package model;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 
 public class ProductTest {
 
     Product product;
+
     @Before
     public void setUp() throws Exception {
         product = new Product("produtoTeste", 1.00);
@@ -22,6 +23,6 @@ public class ProductTest {
 
     @Test
     public void shouldReturnPriceOfProduct() {
-        assertEquals(1.00, product.getUnitValue(),1.00);
+        assertEquals(1.00, product.getUnitValue(), 1.00);
     }
 }
