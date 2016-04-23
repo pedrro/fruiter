@@ -24,11 +24,11 @@ public class Input {
     }
 
     public ArrayList<Register> splitLine(String line) {
-        Product product;
-        Register register;
+        Product product = null;
+        Register register = null;
         String[] productInformation = line.split(";");
-        product = new Product(productInformation[0], Double.parseDouble(productInformation[1]));
-        register = new Register(product, Integer.parseInt(productInformation[2]));
+        product = Product.builder().productName(productInformation[0]).unitValue(Double.parseDouble(productInformation[1])).build();
+        register = Register.builder().product(product).selledQuantity(Integer.parseInt(productInformation[2])).build();
         registerList.add(register);
 
         return registerList;

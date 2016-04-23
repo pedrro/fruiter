@@ -43,8 +43,8 @@ public class Process {
             if (register.get(i).getProduct().getProductName().equalsIgnoreCase(register.get(i + 1).getProduct().getProductName())) {
                 sumEqualProducts = getSumOfEqualProducts(register.get(i).getSelledQuantity(), register.get(i + 1).getSelledQuantity());
                 sumTotalValueSelled = getTotalOfEachProductSelled(register.get(i).getProduct().getUnitValue(), sumEqualProducts);
-                newProduct = new Product(register.get(i).getProduct().getProductName(), register.get(i).getProduct().getUnitValue());
-                newRegister = new Register(newProduct, sumEqualProducts, sumTotalValueSelled);
+                newProduct = Product.builder().productName(register.get(i).getProduct().getProductName()).unitValue(register.get(i).getProduct().getUnitValue()).build();
+                newRegister = Register.builder().product(newProduct).selledQuantity(register.get(i).getSelledQuantity()).totalSelledQuantity(sumTotalValueSelled).build();
                 register.set(i, newRegister);
                 register.remove(i + 1);
                 i--;
@@ -57,8 +57,8 @@ public class Process {
         for (int i = 0; i < register.size(); i++) {
             if (register.get(i).getTotalSelledQuantity() == 0) {
                 sumTotalValueSelled = getTotalOfEachProductSelled(register.get(i).getProduct().getUnitValue(), register.get(i).getSelledQuantity());
-                newProduct = new Product(register.get(i).getProduct().getProductName(), register.get(i).getProduct().getUnitValue());
-                newRegister = new Register(newProduct, register.get(i).getSelledQuantity(), sumTotalValueSelled);
+                newProduct = Product.builder().productName(register.get(i).getProduct().getProductName()).unitValue(register.get(i).getProduct().getUnitValue()).build();
+                newRegister = Register.builder().product(newProduct).selledQuantity(register.get(i).getSelledQuantity()).totalSelledQuantity(sumTotalValueSelled).build();
                 register.set(i, newRegister);
             }
         }

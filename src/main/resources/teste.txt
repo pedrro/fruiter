@@ -3,3 +3,7 @@ GoiAba;0.50;3
 abacaxi;2.50;3
 banana;2;3
 goiaba;0.50;3
+
+goiaba;0.50;8
+abacaxi;2.50;3
+banana;2;3
