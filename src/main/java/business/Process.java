@@ -44,7 +44,7 @@ public class Process {
                 sumEqualProducts = getSumOfEqualProducts(register.get(i).getSelledQuantity(), register.get(i + 1).getSelledQuantity());
                 sumTotalValueSelled = getTotalOfEachProductSelled(register.get(i).getProduct().getUnitValue(), sumEqualProducts);
                 newProduct = Product.builder().productName(register.get(i).getProduct().getProductName()).unitValue(register.get(i).getProduct().getUnitValue()).build();
-                newRegister = Register.builder().product(newProduct).selledQuantity(register.get(i).getSelledQuantity()).totalSelledQuantity(sumTotalValueSelled).build();
+                newRegister = Register.builder().product(newProduct).selledQuantity(sumEqualProducts).totalSelledQuantity(sumTotalValueSelled).build();
                 register.set(i, newRegister);
                 register.remove(i + 1);
                 i--;
