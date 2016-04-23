@@ -19,18 +19,24 @@ public class Process {
         compareNamesAndDeleteTheEquals(register);
         returnTotalSelledForEachProduct(register);
 
-        for (Register r : register) {
-            System.out.println("Nome do produto: " + r.getProduct().getProductName() + "\n Valor da unidade: R$" + r.getProduct().getUnitValue() + "\n Unidades Vendidas: " + r.getSelledQuantity() + "\n Total: R$" + r.getTotalSelledQuantity() + "\n");
-        }
+        register.forEach(r -> System.out.println("Nome do produto: " + r.getProduct().getProductName() +
+                "\n Valor da unidade: R$" +
+                r.getProduct().getUnitValue() +
+                "\n Unidades Vendidas: " +
+                r.getSelledQuantity() +
+                "\n Total: R$" +
+                r.getTotalSelledQuantity() +
+                "\n")
+        );
+
         System.out.println("Total do dia: " + getTotalOfDay(register));
     }
 
     public Double getTotalOfDay(ArrayList<Register> register) {
-        double total = 0;
-        for (Register r : register) {
-            total += r.getProduct().getUnitValue() * r.getTotalSelledQuantity();
-        }
-        return total;
+        final double[] total = {0};
+        register.forEach(r -> total[0] += r.getProduct().getUnitValue() * r.getTotalSelledQuantity() );
+
+        return total[0];
     }
 
     public void sortArray(ArrayList<Register> register) {
